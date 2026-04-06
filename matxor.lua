@@ -102,14 +102,9 @@ local eps = 1e-1
 local rate = 1e-1
 
 -- Abstract later
-for k, v in pairs(Xor) do
+for k, _ in pairs(Xor) do
    mat.randomf(Xor[k], 0, 1)
 end
-
--- for k, _ in pairs(Xor) do
---    print(k .. ":")
---    mat.print(Xor[k])
--- end
 
 -- print("Before:")
 -- MAT_PRINT(Xor.x, "x ")
@@ -122,22 +117,22 @@ end
 -- MAT_PRINT(Xor.b2, "b2")
 -- MAT_PRINT(Xor.a2, "a2")
 
-for i = 1, 25000 do
+for _ = 1, 25000 do
    print("cost = " .. cost(Xor, ti, to))
    finite_diff(Xor, Grad, eps, ti, to)
    train(Xor, Grad, rate)
 end
 
 -- print("After:")
--- MAT_PRINT(Xor.x, "x ")
---
--- MAT_PRINT(Xor.w1, "w1")
--- MAT_PRINT(Xor.b1, "b1")
--- MAT_PRINT(Xor.a1, "a1")
---
--- MAT_PRINT(Xor.w2, "w2")
--- MAT_PRINT(Xor.b2, "b2")
--- MAT_PRINT(Xor.a2, "a2")
+MAT_PRINT(Xor.x, "x ")
+
+MAT_PRINT(Xor.w1, "w1")
+MAT_PRINT(Xor.b1, "b1")
+MAT_PRINT(Xor.a1, "a1")
+
+MAT_PRINT(Xor.w2, "w2")
+MAT_PRINT(Xor.b2, "b2")
+MAT_PRINT(Xor.a2, "a2")
 
 print("cost = " .. cost(Xor, ti, to))
 

@@ -24,21 +24,34 @@ local function cost(w, b)
    return result
 end
 
+local function dcost(w, b)
+   local result = 0.0
+
+   for i = 1, data_size do
+      local x = train_data[i][1]
+      local y = (x * w) + b
+      result = result + 2 * (y - train_data[i][2]) * x
+   end
+   return result / data_size
+end
+
 
 -- Stir the pile until it works
 local w = math.random() * 10                    -- Random float between 1 to 10
-local b = math.random() * 5                     -- bias
+-- local b = math.random() * 5                     -- bias
+local b = math.random()                     -- bias
 local eps = 1e-3
-local rate = 1e-2                               -- learning rate to make dcost smaller, to wiggle slowly
+local rate = 1e-4                               -- learning rate to make dcost smaller, to wiggle slowly
 
 -- Wiggle w to the better direction using dcost
 -- If cost result becomes lower, then correct direction
 print(cost(w, b))
-for _ = 1, 1000 do
-   local dw = (cost(w + eps, b) - cost(w, b)) / eps   -- Derivative function
-   local db = (cost(w, b + eps) - cost(w, b)) / eps   -- Derivative function
+for _ = 1, 10000 do
+   -- local dw = (cost(w + eps, b) - cost(w, b)) / eps   -- Derivative function
+   -- local db = (cost(w, b + eps) - cost(w, b)) / eps   -- Derivative function
+   local dw = dcost(w, b)
    w = w - (rate * dw)
-   b = b - (rate * db)
+   -- b = b - (rate * db)
    print("cost: " .. cost(w, b) .. " w: " .. w .. " b: " .. b)
 end
 

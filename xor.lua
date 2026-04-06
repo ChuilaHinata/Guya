@@ -68,8 +68,8 @@ local Xor = {
    b3 = math.random(),
 }
 
-local eps = 1e-2
-local rate = 1e-2
+local eps = 1e-1
+local rate = 1e-1
 
 -- print("w1 = " .. Xor.w1)
 -- print("w2 = " .. Xor.w2)
@@ -99,7 +99,7 @@ print("cost = " .. cost(Xor) .. "\n")
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -- !!!!You can change this shit!!!!
 -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-local itr = 150000
+local itr = 50000
 for _ = 1, itr do
    Grad = finite_diff(Xor, eps)
    Xor = train(Xor, Grad, rate)
