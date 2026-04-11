@@ -12,7 +12,7 @@ Before 12/4/2026, the library was seperated into matrix.lua and nua.lua.
 local [PutYourNameHere] = require("nua")
 ```
 
-There is many other program can be coded using this library, 2 examples were given in this project.
+There are many other programme can be coded using this library, 2 examples were given in this project.
 
 matxor.lua demonstrated a xor gate using the functions provided by the library.
 
